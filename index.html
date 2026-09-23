@@ -4,43 +4,90 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Первая страница</title>
-<link rel="stylesheet" href="..\project2\index.css">
-    <!--<link rel="stylesheet" href="C:\Users\User\Desktop\project2\index.css">-->
+    <link rel="stylesheet" href="./index.css">
+    
+    <!-- Подключаем Vue.js -->
+    <script src="./vue.global.js"></script>
   </head>
-  <header>
-    <div>
-        <ul class="inline">
-            <li><p><span class="colortext">Тихий угол</p></li></span>
-            <li><p>О нас</p></li>
-            <li><p>Меню</p></li>
-            <li><p>События</p></li>
-            <li><p>Акции</p></li>
-        </ul>
-        
-    </div>
-    <hr>
-  </header>
+  
   <body>
-    <main>
+    <div id="app">
+      <header>
+        <div>
+            <ul class="inline">
+                <li><p><span class="colortext">Тихий угол</span></p></li>
+                <li><p>О нас</p></li>
+                <li><p>Меню</p></li>
+                <li><p>События</p></li>
+                <li><p>Акции</p></li>
+            </ul>
+        </div>
+        <hr>
+      </header>
+      
+      <main>
         <section id="header">
-         <h1>Где знают, как вы пьёте кофе.</h1>
-        <div class="text">
-        <p>Неюольшое кафе во дворе (нужный адрес). Ремесленный хлею на 36-закваске, сезонное меню, квартирники по пятницам и тот самый капучино, который вы ищете</p></div>
-        <button class="one">Посмотреть меню</button>  
-        <button class="two">забронировать стол</button>   
-    </section>
-       <p><b>Сейчас открты до 22:00</b></p>
-       <ul class="inline2">
-        <li><figure class="figure"><img src="..\project2\4c39bb3145d8e7c3d0669d36a73f6dfa" height="300px" width="auto"></figure></li>
-        <li><figure class="figure"><img src="..\project2\09a8732ff4a5f15cb95ec68d729762da" height="300px" width="auto"></figure></li>
-       </ul>
-        </main>
-    <footer>
-    <nav>
-        <ul class="footinline">
-            <li>Связаться с нами (ввести номер)</li>
-            <li>Требуются сотрудники (ввести номер)</li>
+          <h1>Где знают, как вы пьёте кофе.</h1>
+          <div class="text">
+            <p>Небольшое кафе во дворе (нужный адрес). Ремесленный хлеб на 36-часовой закваске, сезонное меню, квартирники по пятницам и тот самый капучино, который вы ищете</p>
+          </div>
+          <button class="one">Посмотреть меню</button>  
+          
+          <!-- При клике меняем showModal на true (окно появится) -->
+          <button class="two" @click="showModal = true">Забронировать стол</button>   
+        </section>
+        
+        <p><b>Сейчас открыты до 22:00</b></p>
+        
+        <ul class="inline2">
+          <li><figure class="figure"><img src="./picture/4c39bb3145d8e7c3d0669d36a73f6dfa.jpg" height="300px" width="auto"></figure></li>
+          <li><figure class="figure"><img src="./picture/09a8732ff4a5f15cb95ec68d729762da.jpg" height="300px" width="auto"></figure></li>
         </ul>
-    </nav>
-  </footer>
-  </html>
+      </main>
+      
+      <!-- ВСПЛЫВАЮЩЕЕ ОКОШКО (МОДАЛКА) -->
+      <!-- Директива v-if управляет тем, есть ли элемент на странице -->
+      <div class="modal-overlay" v-if="showModal">
+        <div class="modal-window">
+          <h2>Бронирование столика</h2>
+          <p>Пожалуйста, укажите ваше имя и время:</p>
+          
+          <input type="text" placeholder="Ваше имя" style="margin-bottom: 10px; padding: 5px;"><br>
+          <input type="time" style="margin-bottom: 15px; padding: 5px;"><br>
+          
+          <button class="one" @click="submitBooking">Подтвердить</button>
+          <!-- При клике меняем showModal обратно на false (окно исчезнет) -->
+          <button class="two" @click="showModal = false">Закрыть</button>
+        </div>
+      </div>
+
+      <footer>
+        <nav>
+            <ul class="footinline">
+                <li>Связаться с нами (ввести номер)</li>
+                <li>Требуются сотрудники (ввести номер)</li>
+            </ul>
+        </nav>
+      </footer>
+    </div>
+
+    <script>
+      const { createApp } = Vue
+
+      createApp({
+        data() {
+          return {
+            // Флаг: показывать окошко или нет. Изначально скрыто (false)
+            showModal: false
+          }
+        },
+        methods: {
+          submitBooking() {
+            alert('Столик успешно забронирован!');
+            this.showModal = false; // Закрываем окно после успешного действия
+          }
+        }
+      }).mount('#app')
+    </script>
+  </body>
+</html>
