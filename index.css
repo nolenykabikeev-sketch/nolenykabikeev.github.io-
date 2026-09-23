@@ -1,0 +1,64 @@
+html{
+    background-color: rgb(255, 249, 235);
+}
+
+
+.inline{
+    list-style: none;
+  display: flex; 
+  li {
+  margin-right: 5%;
+}
+}
+
+section#header{
+  h1{
+    color: rgb(85, 69, 45);
+  }
+}
+
+.text{
+  width: 40%;
+  height: auto;
+}
+
+.one{
+  background-color: black;
+  border-radius: 20px;
+  color: white;
+  padding: 0.5%;
+}
+
+.two{
+  background-color: white;
+  border-radius: 20px;
+  color: black;
+  padding: 0.5%;
+}
+
+
+
+.figure{
+  img{
+    border-radius: 10%;
+    border: 3px solid rgb(153, 117, 70);
+  }
+}
+
+.footinline{
+  background-color: rgb(199, 170, 131);
+  list-style: none;
+  display: flex; 
+  li {
+  margin-right: 2%;
+}
+}
+
+.colortext{
+  color: rgb(92, 67, 47);
+}
+
+.inline2{
+    list-style: none;
+  display: flex; 
+}
